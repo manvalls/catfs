@@ -189,7 +189,7 @@ impl CatFS {
     }
 
     pub fn statfs(&mut self, _ino: u64, reply: ReplyStatfs) {
-        match rlibc::fstatvfs(self.cache_dir) {
+        match rlibc::fstatvfs(self.src_dir) {
             Ok(st) => {
                 reply.statfs(
                     st.f_blocks,
